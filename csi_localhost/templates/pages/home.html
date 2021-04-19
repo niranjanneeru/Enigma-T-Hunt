@@ -1,0 +1,77 @@
+{%load static%}
+{% load socialaccount %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Treasure Hunt</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}"/>
+  <noscript>
+    <link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}"/>
+  </noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper" style="background: url({% static 'images/bg.jpg'%})" class="fade-in">
+
+  <!-- Intro -->
+  <div id="intro">
+    <h1>Treasure Hunt</h1>
+    <p>An Online Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque iusto rem porro ex voluptate provident
+      tenetur, voluptatem, itaque necessitatibus doloribus vitae error possimus, expedita culpa totam quae nostrum
+      praesentium sit?</p>
+
+    <ul class="actions">
+      <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <header id="header">
+    <a class="logo">LocalHost</a>
+  </header>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <ul class="links">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a>Let's start</a></li>
+      <li><a>Leader board</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- Featured Post -->
+    <article class="post featured">
+      <header class="major">
+
+        <h2>Before you go!</h2>
+        <p>On Halloween 1968, Stella and her two friends meet a mysterious drifter, Ramón, and uncover a sinister
+          notebook of stories.I warned them but they didn't listen.Complete every question </p>
+      </header>
+
+
+      <ul class="actions special">
+        <li><a href="{% provider_login_url 'google' %}" class="button large">Login</a></li>
+      </ul>
+    </article>
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
