@@ -12,6 +12,7 @@ class Profile(models.Model):
     marks = models.PositiveSmallIntegerField(default=0, blank=True, null=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     has_completed = models.BooleanField(default=False)
+    last_submission = models.DateTimeField()
     current_question = models.ForeignKey(Question, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):

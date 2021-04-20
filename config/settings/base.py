@@ -80,6 +80,7 @@ LOCAL_APPS = [
     "csi_localhost.user_profile",
     "csi_localhost.game",
     "csi_localhost.rules",
+    "csi_localhost.response",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
