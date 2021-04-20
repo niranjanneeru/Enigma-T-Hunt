@@ -15,6 +15,19 @@
 
 <!-- Wrapper -->
 <div id="wrapper">
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
 
   <!-- Header -->
   <header id="header">
@@ -43,11 +56,10 @@
       </header>
       <div class="image main"><img src="{{ question.image.url }}" alt=""/></div>
       <!-- IF it's a question -->
-      <form class="form-wrap" action="" method="POST">
+      <form class="form-wrap frm" action="" method="POST">
         {% csrf_token %}
-        <h2>Your answer</h2>
-        {{ form }}
-        <button type="submit" class="button large">Submit/Home</button>
+        {{ form }}   
+        <button type="submit" class="button large additional">Submit</button>
       </form>
     </section>
 

@@ -13,7 +13,7 @@
 	<body class="is-preload" >
 		{%if request.user.is_authenticated%}
 		<div class="signout" >
-			<img onclick="show_side_bar(this)" src={{ request.user.socialaccount_set.all.0.get_avatar_url }}>
+			<img class="pic" onclick="show_side_bar(this)" src={{ request.user.socialaccount_set.all.0.get_avatar_url }}>
 			
 		</div>
 		<div id="sidebar" class="sidebar">
@@ -25,11 +25,23 @@
 		{%endif%}
 		<!-- Wrapper -->
 			<div id="wrapper"  class="fade-in" onclick="show_side_bar(this)">
+			<ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>ENIGMA</h1>
-						<p>An Online Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque iusto rem porro ex voluptate provident tenetur, voluptatem, itaque necessitatibus doloribus vitae error possimus, expedita culpa totam quae nostrum praesentium sit?</p>
+						<h1 class="glitch" data-text="Enigma">Enigma</h1>
+						<p>Inside every human being there are treasures to unlock.</p>
 
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>

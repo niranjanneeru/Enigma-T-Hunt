@@ -2,11 +2,6 @@
 
 
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Treasure Hunt</title>
@@ -18,31 +13,39 @@
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper" style="height:100vh;" class="fade-in">
+		<div id="wrapper" style="height:100vh;" class="fade-in">
+			<ul class="circles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
 
-
-				
-
-	
-
-
-
-          <form method="post" class="profile_form">
+			<form method="post" class="profile_form">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit">Submit</button>
+			{{ form }}
+			<div style="text-align:center; margin:20px">
+				<button type="submit">Submit</button>
+		</div>
           </form>
 
 			</div>
-
-		<!-- Scripts -->
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
-    <script src="{% static 'assets/js/browser.min.js' %}"></script>
-    <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
-    <script src="{% static 'assets/js/util.js' %}"></script>
-    <script src="{% static 'assets/js/main.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+			<script>
+				document.getElementById('navPanelToggle').innerHTML= "";
+			</script>
 
 	</body>
 </html>
