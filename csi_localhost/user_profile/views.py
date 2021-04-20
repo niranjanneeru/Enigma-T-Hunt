@@ -28,17 +28,24 @@ def profile_view(request):
 
 
 def leader_view(request):
-    profiles = Profile.objects.all().order_by('-marks')
+    context = {'profiles': Profile.objects.all().order_by('-marks')}
     if request.user.is_authenticated:
-        text = "Let's Start"
         try:
             profile = request.user.profile
             if profile:
                 if profile.current_question:
-                    text = "Let's Continue"
+                    context['text'] = "Let's Continue"
+                    context['has_started'] = True
+                else:
+                    context['text'] = "Let's Start"
+                    context['has_started'] = False
         except Profile.DoesNotExist:
-            pass
-    return render(request, 'profile/lead.html', {"profiles": profiles, "text": text})
+            context['text'] = "Let's Start"
+            context['has_started'] = False
+    else:
+        context['text'] = "Let's Start"
+        context['has_started'] = False
+    return render(request, 'profile/lead.html', context)
 
 
 def logout(request):
