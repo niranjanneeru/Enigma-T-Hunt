@@ -4863,10 +4863,10 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   left: 10px;
   top: 80px;
   padding: 15px;
-  transform: translateX(-100%);
+  transform: translateX(-150%);
 }
 .sidebar2 {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   z-index: 100;

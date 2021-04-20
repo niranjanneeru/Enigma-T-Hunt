@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -12,8 +13,19 @@
 </head>
 <body class="is-preload">
 
-<!-- Wrapper -->
-<div id="wrapper" class="fade-in">
+  {%if request.user.is_authenticated%}
+  <div class="signout" >
+    <img onclick="show_side_bar(this)" src={{ request.user.socialaccount_set.all.0.get_avatar_url }}>
+    
+  </div>
+  <div id="sidebar" class="sidebar">
+    <a>{{request.user.profile.nick_name | title}}</a>
+    <a href="{%url 'user_profile:redirect'%}">Rules</a>
+    <a class="logout_button" href="{% url 'user_profile:logout'%}">Logout</a>
+    
+  </div>
+  {%endif%}
+<div id="wrapper" class="fade-in" onclick="show_side_bar(this)">
 
   <!-- Intro -->
 
@@ -30,7 +42,11 @@
       {% if has_started %}
         <li><a href="{% url 'game:quiz' %}">{{ text }}</a></li>
       {% else %}
-        <li><a href="{% url 'user_profile:redirect' %}">{{ text }}</a></li>
+      {%if request.user.is_authenticated%}
+      <li><a href="{%url 'user_profile:redirect' %}" >Let's start</a></li>
+      {%else%}
+      <li><a href="{% provider_login_url 'google' %}" >Let's start</a></li>
+      {%endif%}
       {% endif %}
       <li class="active"><a href="#">Leader board</a></li>
     </ul>
@@ -48,7 +64,7 @@
       <ol>
         {% for profile in profiles %}
           <li class="leader-r"><span
-                  class="name"><b> {{ profile.nick_name }}</b> </span><span>{{ profile.marks }}</span></li>
+                  class="name"><b> {{ profile.nick_name | title}}</b> </span><span>{{ profile.marks }}</span></li>
         {% endfor %}
       </ol>
 

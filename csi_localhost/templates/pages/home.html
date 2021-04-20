@@ -10,23 +10,25 @@
 		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
 		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" >
 		{%if request.user.is_authenticated%}
 		<div class="signout" >
-			<img onmouseover="show_side_bar()" src={{ request.user.socialaccount_set.all.0.get_avatar_url }}>
+			<img onclick="show_side_bar(this)" src={{ request.user.socialaccount_set.all.0.get_avatar_url }}>
 			
 		</div>
 		<div id="sidebar" class="sidebar">
-			<a href="logout">{{request.user.profile.nick_name}}</a>
-			<a href="logout">Logout</a>
+			<a>{{request.user.profile.nick_name | title}}</a>
+			<a href="{%url 'user_profile:redirect'%}">Rules</a>
+			<a class="logout_button" href="{% url 'user_profile:logout'%}">Logout</a>
+			
 		</div>
 		{%endif%}
 		<!-- Wrapper -->
-			<div id="wrapper"  class="fade-in" onmouseover="hide_side_bar()">
+			<div id="wrapper"  class="fade-in" onclick="show_side_bar(this)">
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>Treasure Hunt</h1>
+						<h1>ENIGMA</h1>
 						<p>An Online Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque iusto rem porro ex voluptate provident tenetur, voluptatem, itaque necessitatibus doloribus vitae error possimus, expedita culpa totam quae nostrum praesentium sit?</p>
 
 						<ul class="actions">
@@ -43,7 +45,11 @@
 					<nav id="nav">
 						<ul class="links">
 							<li class="active"><a href="{%url 'home' %}">Home</a></li>
+							{%if request.user.is_authenticated%}
 							<li><a href="{%url 'user_profile:redirect' %}" >Let's start</a></li>
+							{%else%}
+							<li><a href="{% provider_login_url 'google' %}" >Let's start</a></li>
+							{%endif%}
 							<li><a href="{%url 'user_profile:lead' %}">Leader board</a></li>
 							</ul>
 					</nav>
@@ -85,13 +91,7 @@
     <script src="{% static 'assets/js/util.js' %}"></script>
 	<script src="{% static 'assets/js/main.js' %}"></script>
 	<script >
-	function show_side_bar(){
-		document.getElementById("sidebar").className="sidebar2";	
-		
-}
-	function hide_side_bar(){
-	document.getElementById("sidebar").className="sidebar1";
-}
+
 	</script>
 
 	</body>

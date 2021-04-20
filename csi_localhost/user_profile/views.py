@@ -1,6 +1,6 @@
 from django.contrib.auth import logout as log_me_out
 from django.shortcuts import render, redirect
-
+from csi_localhost.rules.models import Rules
 from .forms import ProfileForm
 from .models import Profile
 
@@ -8,6 +8,7 @@ from .models import Profile
 # Create your views here.
 def profile_view(request):
     user = request.user
+    rules = Rules.objects.all().order_by('priority')
     if user.is_authenticated:
         if request.method == "POST":
             form = ProfileForm(request.POST)
@@ -15,11 +16,11 @@ def profile_view(request):
                 form = form.save(commit=False)
                 form.user = request.user
                 form.save()
-                return render(request, 'profile/start.html')
+                return render(request, 'profile/start.html',{'rules':rules})
         elif request.method == "GET":
             try:
                 profile = user.profile
-                return render(request, 'profile/start.html')
+                return render(request, 'profile/start.html',{'rules':rules})
             except Profile.DoesNotExist:
                 form = ProfileForm(initial={'nick_name': user.username})
                 return render(request, 'profile/profile.html', {'form': form})

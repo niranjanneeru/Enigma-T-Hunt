@@ -257,3 +257,13 @@
 
 })(jQuery);
 
+function show_side_bar(e){
+	
+	if(document.getElementById("sidebar").className=="sidebar" && e.id != "wrapper"){
+		document.getElementById("sidebar").className="sidebar2";
+}	
+	else{
+		document.getElementById("sidebar").className="sidebar";
+	}
+	
+}

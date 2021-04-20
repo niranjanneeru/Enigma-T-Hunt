@@ -8,8 +8,8 @@ class Rules(models.Model):
     rule = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.priority
+        return str(self.priority)
 
     def save(self, *args, **kwargs):
-        self.rule = unescape(self.rule)
+        #self.rule = unescape(self.rule)
         super(Rules, self).save(*args, **kwargs)

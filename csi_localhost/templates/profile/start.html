@@ -11,13 +11,24 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
-
+		{%if request.user.is_authenticated%}
+		<div class="signout" >
+		  <img onclick="show_side_bar(this)" src={{ request.user.socialaccount_set.all.0.get_avatar_url }}>
+		  
+		</div>
+		<div id="sidebar" class="sidebar">
+		  <a>{{request.user.profile.nick_name | title}}</a>
+		  <a href="{%url 'user_profile:redirect'%}">Rules</a>
+		  <a class="logout_button" href="{% url 'user_profile:logout'%}">Logout</a>
+		  
+		</div>
+		{%endif%}
+	  <div id="wrapper" class="fade-in" onclick="show_side_bar(this)">
+	  
 				<!-- Intro -->
 					<div id="intro">
 						<h1>Before you go!</h1>
-						<p>An Online Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque iusto rem porro ex voluptate provident tenetur, voluptatem, itaque necessitatibus doloribus vitae error possimus, expedita culpa totam quae nostrum praesentium sit?</p>
+						<p>	{%for rule in rules%}{{rule.rule | safe}}{%endfor%}</p>
 
 						
 							<a href="{%url 'game:quiz'%}" class="button icon solid  fas fa-play scrolly">Continue</a>
